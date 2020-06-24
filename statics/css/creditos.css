@@ -1,0 +1,114 @@
+#contGeneral{
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  height: 100%;
+  justify-content: space-between;
+}
+img {
+  height: 100px;
+  margin-left: 2px;
+  position: relative;
+  width: 99%;
+}
+div.card {
+  border-radius: 4%;
+  border: solid 2px black;
+  box-shadow: 5px 5px 2px grey;
+  height: 300px;
+  width: 200px;
+}
+div.head {
+  text-align: center;
+}
+div.head span {
+  font-family: cursive;
+}
+/*div.social {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  z-index: 1;
+}*/
+div.social div.contact {
+  border-radius: 10%;
+  cursor: pointer;
+  position: relative;
+  transform: translateX(-90px);
+  transition: width 2s;
+  width: 100%;
+}
+div.social div.contact:nth-child(1) {
+  background-color: #6688CD;
+}
+div.contact:nth-child(1):hover {
+  width: 190px;
+}
+div.social div.contact:nth-child(2) {
+  background-color: #EA5D57;
+}
+div.contact:nth-child(2):hover {
+  width: 180px;
+}
+div.social div.contact:nth-child(3) {
+  background-color: #F3F1F1;
+}
+div.contact:nth-child(3):hover {
+  width: 180px;
+}
+div.social div.contact:nth-child(4) {
+  background-color: green;
+}
+div.contact:nth-child(4):hover {
+  width: 175px;
+}
+div.contact a label {
+  float: right;
+  font-family: cursive;
+  padding: 0px 10px 0px 5px;
+  position: relative;
+}
+div.contact i {
+  float: right;
+  padding: 2px 5px 2px 0px;
+  position: relative;
+}
+div.content p {
+  font-family: cursive;
+  text-align: center;
+}
+div.content p:nth-child(1) {
+  transition: all 1s;
+}
+div.content p:nth-child(1):hover {
+  background-color: blueviolet;
+  color: white;
+  font-weight: bold;
+  padding: 20px 0px 20px 0px;
+}
+div.content p.oculto {
+  opacity: 0;
+  transition: opacity 1s;
+}
+div.content p.oculto:hover {
+  cursor: pointer;
+  opacity: 1;
+}
+
+.contact{
+  background-color: rgb(48, 195, 29);
+  border: 0.5em;
+  border-radius: 0.5em;
+  margin: 3px;
+  padding: 5px;
+  transition: width 1s, background-color 1.5s;
+  width: 30px;
+}
+
+.social {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  top: 5%;
+  z-index: 50;
+}

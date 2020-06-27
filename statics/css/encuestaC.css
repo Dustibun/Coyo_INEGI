@@ -1,0 +1,62 @@
+
+nav{
+  top:0;
+  left:0;
+  right:0;
+  position: absolute;
+  height:10%;
+  color: white;
+  background-color: rgb(28, 41, 27);
+}
+.ContP{
+  margin: 1%;
+  margin-top: 10%;
+}
+textarea{
+  text-align: center;
+  margin-top:2%;
+  align-self: center;
+  left:27%;
+  right:30%;
+  resize: none;
+}
+.botones{
+  display: flex;
+  width:90px;
+  height: 40px;
+  justify-content: space-between;
+}
+.contenido{
+  position:absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  align-content: center;
+  top:20%;
+  width: 100%;
+  height: 100%;
+}
+.preguntas{
+  left:40%;
+  position:absolute;
+}
+.formulario{
+  height: 100%;
+  width: 100%;
+  position: absolute;
+}
+.esconde{
+  display: none;
+}
+.oculta{
+  display: none;
+}
+button{
+  margin-left: 10%;
+  margin: 2%;
+  position: absolute;
+}
+.datosEncuesta{
+  width: 100%;
+  height:40%;
+}

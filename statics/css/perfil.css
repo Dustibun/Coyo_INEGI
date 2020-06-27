@@ -1,0 +1,174 @@
+@font-face {
+  font-family: "Roboto";
+  src: url("../../lib/fuentes/roboto-condensed.light.ttf");
+}
+@font-face {
+  font-family: "RobotoBold";
+  src: url("../../lib/fuentes/roboto-condensed.bold.ttf");
+}
+#fondo{
+  width:100%;
+}
+#perfil{
+  position: absolute;
+  width: 18%;
+  height: auto;
+  left: 5%;
+  top: 20%;
+  opacity: 0.8;
+  border-radius: 50%;
+}
+#plus{
+  position: absolute;
+  color:#2CBFA0;
+  font-size: 50px;
+  left: 18%;
+  top: 50%;
+}
+
+#logo-header {
+  float: left;
+  padding: 3px 0 0 20px;
+}
+#logo-header:hover {
+  background-color: #007bff;
+}
+#menu ul {
+  list-style:none;
+}
+
+#menu ul a {
+  display:block;
+  text-decoration:none;
+  font-weight:500;
+  padding:20px;
+  font-family:"Arcade";
+  font-size: 20px;
+  text-transform:uppercase;
+}
+
+#menu ul li {
+  position:relative;
+  float:left;
+}
+/*#menu ul li:hover {
+background: #007bff;
+border-radius: 50%;
+}*/
+#menu ul ul {
+  display:none;
+  position:absolute;
+  top:100%;
+}
+
+#menu ul ul li {
+  float:none;
+  width:40%;
+}
+#menu ul a {
+    display:block;
+    color:#fff;
+    text-decoration:none;
+    font-weight:500;
+    padding:20px;
+    font-family:"Arcade";
+    font-size: 20px;
+    text-transform:uppercase;
+}
+#menu ul ul a {
+  line-height:120%;
+
+  color: white;
+}
+#menu ul li:hover ul {
+  background-color: #F3925B;
+  display:block;
+  opacity: 0.8;
+  border-radius: 10%;
+}
+/*Darle estilo al header*/
+header {
+  position: fixed;
+  width: 100%;
+  z-index: 100;
+}
+/*Darle estilo a la etiqueta header con etiqueta nav*/
+header nav {
+  float: right;
+}
+button{
+  width:20%;
+  height: 100px;
+
+  background:#DB4845;
+  border-radius: 131px;
+  /*#EEE585*/
+  font-size: 30px;
+  line-height: 28px;
+  color: #FFFFFF;
+  border:none;
+  font-family: "Roboto";
+  margin-left: 5%;
+  margin-top: 5%;
+}
+/*#F3925B*/
+button:hover{
+  background:#DB4845;
+  border-radius: 131px;
+  /*#EEE585*/
+  font-size: 30px;
+  line-height: 50px;
+  color: #FFFFFF;
+  border:none;
+  font-family: "RobotoBold";
+  animation-duration: 5s;
+  animation-name: levantar;
+}
+#nombredelusuario {
+  margin-left: 25%;
+  font-size: 60px;
+  margin-top: -0.5%;
+  font-family:"Roboto";
+}
+#cumple{
+  margin-top: -3.5%;
+  margin-left: 27%;
+  font-size: 20px;
+  font-family:"Roboto";
+}
+#correo{
+  margin-left: 27%;
+  font-size: 20px;
+  font-family:"Roboto";
+}
+.infousuario{
+  display: inline;
+}
+.seleccion{
+  display: flex;
+  align-content: space-between;
+
+
+}
+#u:hover{
+  transition: width 2s, height 2s, transform 2s;
+  transform: rotate(360deg);
+  opacity: 0.8;
+}
+
+@keyframes levantar{
+  0% {
+    transform: scale(1.0) translateY(-0.80em);
+  }
+  5% {
+    opacity: 1;
+  }
+  89% {
+    opacity: 1;
+    transform: scale(1.1);
+  }
+  100% {
+    opacity: 0;
+    transform: translateZ(+1000em);
+  }
+}

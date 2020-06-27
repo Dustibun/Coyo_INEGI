@@ -18,6 +18,13 @@ function creaInput(clase){
     titulo.innerText="Maestro";
     tipo.setAttribute("value","maestro");
     inputCambio.innerHTML="";
+    var textAdmin=document.createElement("h4");
+    textAdmin.innerText="Administrador";
+    var admin=document.createElement("input");
+    admin.setAttribute("type", "checkbox");
+    admin.setAttribute("name", "admin");
+    inputCambio.appendChild(textAdmin);
+    inputCambio.appendChild(admin);
     uno.setAttribute("name", "noTrabajador");
     //uno.setAttribute("pattern", "^\d{6}$");
     titUno.innerText="Número de Trabajador";
@@ -42,6 +49,7 @@ function creaInput(clase){
     boton.classList.add("maestro");
     boton.classList.remove("alumno");
     boton.innerText="Maestro";
+    inputCambio.innerHTML="";
     var tres = document.createElement("input");
     tres.setAttribute("name", "fecha");
     tres.setAttribute("type","date");

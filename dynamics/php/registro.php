@@ -75,92 +75,76 @@ if ($tipo=="alumno") {
   /*$reg="/^(200[$nac_2$nac_3$nac$nac_4$nac_5])-(0[1-9]|1[012])-(0[1-9]|1[0-9]|2[0-9]|3[01])$/";
   $reg2="/^(1($iP|$iS|$iT)|3($p|$s|$t))\d{6}$/";
   $reg3="/^$dosC$paterno2$tresC$unoC$año$mes$dia(MH)(AS|BS|CL|CS|DF|GT|HG|MC|MS|NL|PL|QR|SL|TC|TL|YN|NE|BC|CC|CM|CH|DG|GR|JC|MN|NT|OC|QT|SP|SR|TS|VZ|ZS)$patC$matC$nom2C(A|B|C|D|E|F|G|H|I|J|K|L|M|N|O|P|Q|R|S|T|U|V|W|X|Y|Z)\d$/";
-  if(!preg_match($reg,$fecha)){
-    header('Location:../templates/registro.html');
-  }
-  if(!preg_match($reg2,$noCuen)){
-    header('Location:../templates/registro.html');
-  }
-  if(!preg_match($reg3,$curp)){
-    header('Location:../templates/registro.html');
-  }*/
-  if($conexion){
-    $nom=mysqli_real_escape_string($conexion,$nom);
-    $apPat=mysqli_real_escape_string($conexion,$apPat);
-    $apMat=mysqli_real_escape_string($conexion,$apMat);
-    $corr=mysqli_real_escape_string($conexion,$corr);
-    $con=mysqli_real_escape_string($conexion,$con);
-    $fecha=mysqli_real_escape_string($conexion,$fecha);
-    $noCuen=mysqli_real_escape_string($conexion,$noCuen);
-    $curp=mysqli_real_escape_string($conexion,$curp);
-    $corrCod=codif($corr);
-    $conCod=codif($con);
-    $cuenCod=codif($noCuen);
-    $curCod=codif($curp);
-    $corrCod=base64_encode($corrCod);
-    $conCod=base64_encode($conCod);
-    $cuenCod=base64_encode($cuenCod);
-    $curCod=base64_encode($curCod);
+*/
+  //if(preg_match($reg,$fecha) && preg_match($reg2,$noCuen) && preg_match($reg3,$curp)){
+    if($conexion){
+      $nom=mysqli_real_escape_string($conexion,$nom);
+      $apPat=mysqli_real_escape_string($conexion,$apPat);
+      $apMat=mysqli_real_escape_string($conexion,$apMat);
+      $corr=mysqli_real_escape_string($conexion,$corr);
+      $con=mysqli_real_escape_string($conexion,$con);
+      $fecha=mysqli_real_escape_string($conexion,$fecha);
+      $noCuen=mysqli_real_escape_string($conexion,$noCuen);
+      $curp=mysqli_real_escape_string($conexion,$curp);
+      $conCod=codif($con);
+      $conCod=base64_encode($conCod);
 
-    $a=[];
-    $b=[];
-    $c=[];
-    $i=0;
-    $j=0;
-    $k=0;
-    $registro=0;
-    $id_usuario=  "SELECT id_usuario FROM usuario";
-    $id_correo=  "SELECT correo FROM usuario";
-    $id_usuario2=  "SELECT id_usuario2 FROM usuario";
-    $resp_usu= mysqli_query($conexion, $id_usuario);
-    $resp_corr= mysqli_query($conexion, $id_correo);
-    $resp_usu2= mysqli_query($conexion, $id_usuario2);
-    while($rev_usu= mysqli_fetch_array($resp_usu)){
-      $rev_usu[0]=base64_decode($rev_usu[0]);
-      $rev_usu[0]=decodif($rev_usu[0]);
-      $a[$i]=$rev_usu[0];
-      if($rev_usu[0]==$noCuen){
-        $registro=1;
+      $a=[];
+      $b=[];
+      $c=[];
+      $i=0;
+      $j=0;
+      $k=0;
+      $registro=0;
+      $id_usuario=  "SELECT id_usuario FROM usuario";
+      $id_correo=  "SELECT correo FROM usuario";
+      $id_usuario2=  "SELECT id_usuario2 FROM usuario";
+      $resp_usu= mysqli_query($conexion, $id_usuario);
+      $resp_corr= mysqli_query($conexion, $id_correo);
+      $resp_usu2= mysqli_query($conexion, $id_usuario2);
+      while($rev_usu= mysqli_fetch_array($resp_usu)){
+        $a[$i]=$rev_usu[0];
+        if($rev_usu[0]==$noCuen){
+          $registro=1;
+        }
+        $i++;
       }
-      $i++;
-    }
-    while($rev_correo= mysqli_fetch_array($resp_corr)){
-      $rev_correo[0]=base64_decode($rev_correo[0]);
-      $rev_correo[0]=decodif($rev_correo[0]);
-      $b[$j]=$rev_correo[0];
-      if($rev_correo[0]==$corr){
-        $registro=1;
+      while($rev_correo= mysqli_fetch_array($resp_corr)){
+        $b[$j]=$rev_correo[0];
+        if($rev_correo[0]==$corr){
+          $registro=1;
+        }
+        $j++;
       }
-      $j++;
-    }
-    while($rev_usu2= mysqli_fetch_array($resp_usu2)){
-      $rev_usu2[0]=base64_decode($rev_usu2[0]);
-      $rev_usu2[0]=decodif($rev_usu2[0]);
-      $c[$k]=$rev_usu2[0];
-      if($rev_usu2[0]==$curp){
-        $registro=1;
+      while($rev_usu2= mysqli_fetch_array($resp_usu2)){
+        $c[$k]=$rev_usu2[0];
+        if($rev_usu2[0]==$curp){
+          $registro=1;
+        }
+        $k++;
       }
-      $k++;
-    }
-    echo $registro;
-    if($a==[]){ //En caso de que sea el primer registro
-      $registro= "INSERT INTO usuario VALUES (1,'$cuenCod','$curCod','$conCod',2,'$corrCod',2,'','$nom','$apPat','$apMat','$fecha')";
+      echo $registro;
+      if($a==[]){ //En caso de que sea el primer registro
+        $registro= "INSERT INTO usuario VALUES (1,'$noCuen','$curp','$conCod',2,'$corr',2,'','$nom','$apPat','$apMat','$fecha')";
+          mysqli_query($conexion, $registro);
+          mysqli_close($conexion);
+          header('Location:../../templates/inicio.html');
+      }
+      if($registro==0){ //En caso de que los datos como el número de cuenta, el correo o el curp no estén repetidos
+        $registro= "INSERT INTO usuario VALUES (1,'$noCuen','$curp','$conCod',2,'$corr',2,'','$nom','$apPat','$apMat','$fecha')";
         mysqli_query($conexion, $registro);
         mysqli_close($conexion);
-        header('Location:iniciarSesión.php');
+        header('Location:../../templates/inicio.html');
+      }else if($registro==1){
+        header('Location:registroInc.php');
+        mysqli_close($conexion);
+      }
+    }else{
+      echo "conexion fallida";
     }
-    if($registro==0){ //En caso de que los datos como el número de cuenta, el correo o el curp no estén repetidos
-      $registro= "INSERT INTO usuario VALUES (1,'$cuenCod','$curCod','$conCod',2,'$corrCod',2,'','$nom','$apPat','$apMat','$fecha')";
-      mysqli_query($conexion, $registro);
-      mysqli_close($conexion);
-      header('Location:iniciarSesión.php');
-    }else if($registro==1){
-      header('Location:registroInc.php');
-      mysqli_close($conexion);
-    }
-  }else{
-    echo "conexion fallida";
-  }
+  /*}else{
+    header('Location:../../templates/registro.html');
+  }*/
 }
 if($tipo=="maestro"){
   $nom=strip_tags($_POST['nombre']);
@@ -170,88 +154,80 @@ if($tipo=="maestro"){
   $con=strip_tags($_POST['contraseña']);
   $noTra=strip_tags($_POST['noTrabajador']);
   $rfc=strip_tags($_POST['rfc']);
+  $admin=(isset($_POST['admin']))? '1':'2';
 
   /*$reg4="/^$unoR$tresC$unoC$año$mes$dia\d{2}(0[1-9]|1[012])(0[1-9]|1[0-9]|2[0-9]|3[0-1])[0-9A-Z]{3}$/";
-  if(!preg_match($reg4,$rfc)){
-    header('Location:../templates/registro.html');
+  if(preg_match($reg4,$rfc)){
+    */
+
+    if($conexion){
+      $nom=mysqli_real_escape_string($conexion,$nom);
+      $apPat=mysqli_real_escape_string($conexion,$apPat);
+      $apMat=mysqli_real_escape_string($conexion,$apMat);
+      $corr=mysqli_real_escape_string($conexion,$corr);
+      $con=mysqli_real_escape_string($conexion,$con);
+      $noTra=mysqli_real_escape_string($conexion,$noTra);
+      $rfc=mysqli_real_escape_string($conexion,$rfc);
+      $conCod=codif($con);
+      $conCod=base64_encode($conCod);
+
+      $a=[];
+      $b=[];
+      $c=[];
+      $i=0;
+      $j=0;
+      $k=0;
+      $registro=0;
+      $id_usuario=  "SELECT id_usuario FROM usuario";
+      $id_correo=  "SELECT correo FROM usuario";
+      $id_usuario2=  "SELECT id_usuario2 FROM usuario";
+      $resp_usu= mysqli_query($conexion, $id_usuario);
+      $resp_corr= mysqli_query($conexion, $id_correo);
+      $resp_usu2= mysqli_query($conexion, $id_usuario2);
+      while($rev_usu= mysqli_fetch_array($resp_usu)){
+        $a[$i]=$rev_usu[0];
+        if($rev_usu[0]==$noTra){
+          $registro=1;
+        }
+        $i++;
+      }
+      while($rev_correo= mysqli_fetch_array($resp_corr)){
+        $b[$j]=$rev_correo[0];
+        if($rev_correo[0]==$corr){
+          $registro=1;
+        }
+        $j++;
+      }
+      while($rev_usu2= mysqli_fetch_array($resp_usu2)){
+        $c[$k]=$rev_usu2[0];
+        if($rev_usu2[0]==$rfc){
+          $registro=1;
+        }
+        $k++;
+      }
+      echo $registro;
+      if($a==[]){ //En caso de que sea el primer registro
+        $registro= "INSERT INTO usuario VALUES (2,'$noTra','$rfc','$conCod',2,'$corr','$admin','','$nom','$apPat','$apMat','N/A')";
+          mysqli_query($conexion, $registro);
+          mysqli_close($conexion);
+          header('Location:../../templates/inicio.html');
+      }
+      if($registro==0){ //En caso de que los datos como el número de cuenta, el correo o el curp no estén repetidos
+        $registro= "INSERT INTO usuario VALUES (2,'$noTra','$rfc','$conCod',2,'$corr','$admin','','$nom','$apPat','$apMat','N/A')";
+          mysqli_query($conexion, $registro);
+          mysqli_close($conexion);
+          header('Location:../../templates/inicio.html');
+      }else if($registro==1){
+          header('Location:../../templates/registro.html');
+          mysqli_close($conexion);
+      }
+    }else{
+      echo "Conexión fallida";
+    }
+
+  /*}else{
+    header('Location:../../templates/registro.html');
   }*/
-
-  if($conexion){
-    $nom=mysqli_real_escape_string($conexion,$nom);
-    $apPat=mysqli_real_escape_string($conexion,$apPat);
-    $apMat=mysqli_real_escape_string($conexion,$apMat);
-    $corr=mysqli_real_escape_string($conexion,$corr);
-    $con=mysqli_real_escape_string($conexion,$con);
-    $noTra=mysqli_real_escape_string($conexion,$noTra);
-    $rfc=mysqli_real_escape_string($conexion,$rfc);
-    $corrCod=codif($corr); //Se hashean los datos sensibles, id_usuario y su contraseña
-    $conCod=codif($con);
-    $noTraCod=codif($noTra);
-    $rfcCod=codif($rfc);
-    $corrCod=base64_encode($corrCod);
-    $conCod=base64_encode($conCod);
-    $noTraCod=base64_encode($noTraCod);
-    $rfcCod=base64_encode($rfcCod);
-
-    $a=[];
-    $b=[];
-    $c=[];
-    $i=0;
-    $j=0;
-    $k=0;
-    $registro=0;
-    $id_usuario=  "SELECT id_usuario FROM usuario";
-    $id_correo=  "SELECT correo FROM usuario";
-    $id_usuario2=  "SELECT id_usuario2 FROM usuario";
-    $resp_usu= mysqli_query($conexion, $id_usuario);
-    $resp_corr= mysqli_query($conexion, $id_correo);
-    $resp_usu2= mysqli_query($conexion, $id_usuario2);
-    while($rev_usu= mysqli_fetch_array($resp_usu)){
-      $rev_usu[0]=base64_decode($rev_usu[0]);
-      $rev_usu[0]=decodif($rev_usu[0]);
-      $a[$i]=$rev_usu[0];
-      if($rev_usu[0]==$noTra){
-        $registro=1;
-      }
-      $i++;
-    }
-    while($rev_correo= mysqli_fetch_array($resp_corr)){
-      $rev_correo[0]=base64_decode($rev_correo[0]);
-      $rev_correo[0]=decodif($rev_correo[0]);
-      $b[$j]=$rev_correo[0];
-      if($rev_correo[0]==$corr){
-        $registro=1;
-      }
-      $j++;
-    }
-    while($rev_usu2= mysqli_fetch_array($resp_usu2)){
-      $rev_usu2[0]=base64_decode($rev_usu2[0]);
-      $rev_usu2[0]=decodif($rev_usu2[0]);
-      $c[$k]=$rev_usu2[0];
-      if($rev_usu2[0]==$rfc){
-        $registro=1;
-      }
-      $k++;
-    }
-    echo $registro;
-    if($a==[]){ //En caso de que sea el primer registro
-      $registro= "INSERT INTO usuario VALUES (2,'$noTraCod','$rfcCod','$conCod',2,'$corrCod',2,'','$nom','$apPat','$apMat','N/A')";
-        mysqli_query($conexion, $registro);
-        mysqli_close($conexion);
-        header('Location:iniciarSesión.php');
-    }
-    if($registro==0){ //En caso de que los datos como el número de cuenta, el correo o el curp no estén repetidos
-      $registro= "INSERT INTO usuario VALUES (2,'$noTraCod','$rfcCod','$conCod',2,'$corrCod',2,'','$nom','$apPat','$apMat','N/A')";
-        mysqli_query($conexion, $registro);
-        mysqli_close($conexion);
-        header('Location:iniciarSesión.php');
-    }else if($registro==1){
-        header('Location:registroInc.php');
-        mysqli_close($conexion);
-    }
-  }else{
-    echo "Conexión fallida";
-  }
 }
 
 
@@ -263,9 +239,5 @@ Número de cuenta:'^(1(15|16|17)|3(18|19|20))\d{6}$'
 Correo electrónico:^\w+@(comunidad.unam.mx|(gmail|hotmail|yahoo).com)$
 CURP: ^[A-Z]{4}(0[1-9]|[1-9][0-9])(0[1-9]|1[012])(0[1-9]|1[0-9]|2[0-9]|3[01])[MH](AS|BS|CL|CS|DF|GT|HG|MC|MS|NL|PL|QR|SL|TC|TL|YN|NE|BC|CC|CM|CH|DG|GR|JC|MN|NT|OC|QT|SP|SR|TS|VZ|ZS)[A-Z]{3}[A-Z]\w$
 Número de trabajador: ^\d{6}$*/
-
-
-
-
 
  ?>

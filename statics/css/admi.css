@@ -1,0 +1,101 @@
+@font-face {
+  font-family: "Roboto";
+  src: url("../../lib/fuentes/roboto-condensed.light.ttf");
+}
+@font-face {
+  font-family: "RobotoBold";
+  src: url("../../lib/fuentes/roboto-condensed.bold.ttf");
+}
+body{
+  background-image: url("../../statics/media/img/adminfondo.jpg");
+  background-size: cover;
+}
+
+/*Darle estilo al header*/
+header {
+  position: fixed;
+  width: 100%;
+  z-index: 100;
+}
+ul, ol {
+  list-style:none;
+}
+.nav > li {
+  float:left;
+}
+
+.nav li a {
+  background-color:#31438F;
+  color:white;
+  text-decoration:none;
+  padding:20px 24px;
+  display:block;
+  margin-right: 2%;
+}
+
+.nav li a:hover {
+  background-color:#2CBFA0;
+  cursor: pointer;
+}
+
+.nav li ul {
+  display:none;
+  position:absolute;
+  min-width:140px;
+}
+
+.nav li:hover > ul {
+  display:block;
+}
+
+.nav li ul li {
+  position:relative;
+}
+
+.nav li ul li ul {
+  right:-140px;
+  top:0px;
+}
+
+.infousuario{
+  display: inline;
+}
+.seleccion{
+  display: flex;
+  align-content: space-between;
+}
+
+#header {
+  position: absolute;
+  margin:auto;
+  width:500px;
+  font-family:"Roboto";
+  font-size: 20px;
+  margin-top: 10%;
+  margin-left: 15%;
+}
+#fondo{
+  width:100%;
+}
+#perfil{
+  position: absolute;
+  width: 10%;
+  height: auto;
+  left: 5%;
+  top: 5%;
+  opacity: 0.8;
+  border-radius: 50%;
+}
+#nombre {
+  position: absolute;
+  margin-left: 20%;
+  font-size: 60px;
+  margin-top: 5%;
+  font-family:"Roboto";
+}
+#misencuestas:hover {
+  background-color: #F3925B;
+  display:block;
+  opacity: 0.8;
+  border-radius: 10%;
+}

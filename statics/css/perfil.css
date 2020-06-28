@@ -1,10 +1,10 @@
 @font-face {
   font-family: "Roboto";
-  src: url("../../lib/fuentes/roboto-condensed.light.ttf");
+  src: url("../../libs/fuentes/roboto-condensed.light.ttf");
 }
 @font-face {
   font-family: "RobotoBold";
-  src: url("../../lib/fuentes/roboto-condensed.bold.ttf");
+  src: url("../../libs/fuentes/roboto-condensed.bold.ttf");
 }
 #fondo{
   width:100%;
@@ -13,8 +13,8 @@
   position: absolute;
   width: 18%;
   height: auto;
+  margin-top:-8%;
   left: 5%;
-  top: 20%;
   opacity: 0.8;
   border-radius: 50%;
 }
@@ -97,31 +97,28 @@ header nav {
   float: right;
 }
 button{
-  width:20%;
-  height: 100px;
-
+  width:200px;
+  height: 100px;;
   background:#DB4845;
   border-radius: 131px;
-  /*#EEE585*/
-  font-size: 30px;
+  font-size:150%;
   line-height: 28px;
   color: #FFFFFF;
   border:none;
   font-family: "Roboto";
   margin-left: 5%;
   margin-top: 5%;
+  min-width: 15%;
 }
-/*#F3925B*/
+
 button:hover{
   background:#DB4845;
   border-radius: 131px;
-  /*#EEE585*/
+  cursor: pointer;
   font-size: 30px;
-  line-height: 50px;
   color: #FFFFFF;
   border:none;
-  font-family: "RobotoBold";
-  animation-duration: 5s;
+  animation-duration: 3s;
   animation-name: levantar;
 }
 #nombredelusuario {
@@ -147,6 +144,7 @@ button:hover{
 .seleccion{
   display: flex;
   align-content: space-between;
+  flex-wrap: wrap;
 
 
 }
@@ -158,17 +156,38 @@ button:hover{
 
 @keyframes levantar{
   0% {
-    transform: scale(1.0) translateY(-0.80em);
-  }
-  5% {
-    opacity: 1;
-  }
-  89% {
-    opacity: 1;
-    transform: scale(1.1);
+    transform:translateY(-0.80em);
   }
   100% {
-    opacity: 0;
     transform: translateZ(+1000em);
   }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+.consultaEnc{
+  padding: 20px;
+  background-color: #DB4845;
+  color: white;
+  border: solid 10px #2CBFA0;
+  margin-top: 10px;
+  border-radius: 20px;
+}
+
+.consultaAct{
+  padding: 20px;
+  background-color: #2CBFA0;
+  color: white;
+  border: solid 10px #DB4845;
+  margin-top: 10px;
+  border-radius: 20px;
 }

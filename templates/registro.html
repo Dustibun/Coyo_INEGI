@@ -18,24 +18,24 @@
         <div class="formRegistro">
           <form class="" action="../dynamics/php/registro.php" method="post">
             <h4>Nombre(s)</h4>
-            <input type="text" name="nombre">  <!--pattern="^([A-ZÁÉÍÓÚ][a-záéíóú]{1,}\s?)+$" required-->
+            <input type="text" name="nombre" pattern="^([A-ZÁÉÍÓÚ][a-záéíóú]{1,}\s?)+$" required>
             <h4>Apellido Paterno</h4>
-            <input type="text" name="apPaterno" >  <!--pattern="^([A-ZÁÉÍÓÚ][a-záéíóú]{1,}\s?)+$" required-->
+            <input type="text" name="apPaterno"pattern="^([A-ZÁÉÍÓÚ][a-záéíóú]{1,}\s?)+$" required>
             <h4>Apellido Materno</h4>
-            <input type="text" name="apMaterno" > <!--pattern="^([A-ZÁÉÍÓÚ][a-záéíóú]{1,}\s?)+$" required-->
+            <input type="text" name="apMaterno" pattern="^([A-ZÁÉÍÓÚ][a-záéíóú]{1,}\s?)+$" required>
             <h4>Correo Electrónico</h4>
-            <input type="text" name="correo" > <!--pattern="^\w+@(comunidad.unam.mx|(gmail|hotmail|yahoo).com)$" required-->
+            <input type="text" name="correo"pattern="^\w+@(comunidad.unam.mx|(gmail|hotmail|yahoo).com)$" required>
             <h4 class="tituloUno">Número de cuenta</h4>
-            <input type="text" name="noCuenta" class="uno" > <!--pattern="^\d{9}$" required-->
+            <input type="text" name="noCuenta" class="uno" pattern="^\d{9}$" required>
             <h4 class="tituloDos">CURP</h4>
-            <input type="text" name="curp"  class="dos"> <!--pattern="^[A-Z]{4}(0[1-9]|[1-9][0-9])(0[1-9]|1[012])(0[1-9]|1[0-9]|2[0-9]|3[01])[MH](AS|BS|CL|CS|DF|GT|HG|MC|MS|NL|PL|QR|SL|TC|TL|YN|NE|BC|CC|CM|CH|DG|GR|JC|MN|NT|OC|QT|SP|SR|TS|VZ|ZS)[A-Z]{3}[A-Z]\w$" required-->
+            <input type="text" name="curp"  class="dos" pattern="^[A-Z]{4}(0[1-9]|[1-9][0-9])(0[1-9]|1[012])(0[1-9]|1[0-9]|2[0-9]|3[01])[MH](AS|BS|CL|CS|DF|GT|HG|MC|MS|NL|PL|QR|SL|TC|TL|YN|NE|BC|CC|CM|CH|DG|GR|JC|MN|NT|OC|QT|SP|SR|TS|VZ|ZS)[A-Z]{3}[A-Z]\w$" required>
             <input type="hidden" name="tipo" value="alumno" class="tipo">
             <div class="cambio">
               <h4>Fecha de nacimiento</h4>
-              <input type="date" name="fecha">  <!--pattern="^(200[2-3])-(0[1-9]|1[012])-(0[1-9]|1[0-9]|2[0-9]|3[01])$" required-->
+              <input type="date" name="fecha"pattern="^(200[2-3])-(0[1-9]|1[012])-(0[1-9]|1[0-9]|2[0-9]|3[01])$" required>
             </div>
             <h4>Contraseña</h4>
-            <input type="password" name="contraseña" >  <!--pattern="((?=\S*[A-Z])(?=\S*[a-z])(?=\S*\d)($?=\S*[@$%#!¡?¿.,]))\S{10,30}$" required-->
+            <input type="password" name="contraseña" pattern="((?=\S*[A-Z])(?=\S*[a-z])(?=\S*\d)($?=\S*[@$%#!¡?¿.,]))\S{10,30}$" required>
             <span class="envio"><input type="submit" name"enviar" class="enviar"></span>
             <p>¿Ya tienes una cuenta?<a class="link" href="inicio.html">Iniciar Sesion</a></p>
           </form>

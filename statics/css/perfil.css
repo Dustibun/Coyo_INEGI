@@ -1,10 +1,10 @@
 @font-face {
   font-family: "Roboto";
-  src: url("../../lib/fuentes/roboto-condensed.light.ttf");
+  src: url("../../libs/fuentes/roboto-condensed.light.ttf");
 }
 @font-face {
   font-family: "RobotoBold";
-  src: url("../../lib/fuentes/roboto-condensed.bold.ttf");
+  src: url("../../libs/fuentes/roboto-condensed.bold.ttf");
 }
 #fondo{
   width:100%;
@@ -13,8 +13,8 @@
   position: absolute;
   width: 18%;
   height: auto;
+  margin-top:-8%;
   left: 5%;
-  top: 20%;
   opacity: 0.8;
   border-radius: 50%;
 }
@@ -110,6 +110,7 @@ button{
   font-family: "Roboto";
   margin-left: 5%;
   margin-top: 5%;
+  min-width: 15%;
 }
 /*#F3925B*/
 button:hover{
@@ -171,4 +172,33 @@ button:hover{
     opacity: 0;
     transform: translateZ(+1000em);
   }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+.consultaEnc{
+  padding: 20px;
+  background-color: #DB4845;
+  color: white;
+  border: solid 10px #2CBFA0;
+  margin-top: 10px;
+  border-radius: 20px;
+}
+
+.consultaAct{
+  padding: 20px;
+  background-color: #2CBFA0;
+  color: white;
+  border: solid 10px #DB4845;
+  margin-top: 10px;
+  border-radius: 20px;
 }

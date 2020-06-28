@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<meta name="viewport" content="width=device-width, user-scalable=yes, initial-scale=1.0, maximum-scale=3.0, minimum-scale=1.0">
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" >
+	<link rel="stylesheet" href="../statics/css/inicio.css">
+</head>
+<body>
+	<form class="formulario" id="formulario" action="../dynamics/php/consultas.php" method="POST">
+		<h1>Alumno</h1>
+		<div class="contenedor">
+			<!-- <div class="input-contenedor"> -->
+			<!-- <i class="fas fa-envelope icon"></i>
+			<input type="text" placeholder="Correo Electronico" pattern="^\w+@(comunidad.unam.mx|(gmail|hotmail|yahoo).com)$"> -->
+			<!-- </div> -->
+			<div class="input-contenedor">
+				<div class="cambio">
+					<i class="fas fa-address-card icon"></i>
+					<input type="text" placeholder="NoCuenta/Correo" name="noCuenta" class="uno" id="alumno" pattern="^(\d{9}$|\w+@(comunidad.unam.mx|(gmail|hotmail|yahoo).com))$">
+				</div>
+			</div>
+			<div class="input-contenedor">
+				<i class="fas fa-key icon"></i>
+				<input type="password" name="pwd" placeholder="Contraseña" id="password">
+			</div>
+			<input type="submit"value="Ingresar" class="button" >
+			<p>¿No tienes una cuenta? <a class="link" href="registro.html">Registrate</a></p>
+			<p class="admin"></p>
+			<div class="botones">
+				<button type="button" class="maestro" id="botonCambio">Maestro</button> <p></p>
+			</div>
+			<input type="hidden" name="tipo" value="alumno" class="tipo">
+			<input type="hidden" name="ingreso" value="cuenta" class="ingreso">
+			<input type="hidden" name="acomodo" value="no" class="acomodo">
+		</div>
+	</form>
+	<script src="../dynamics/js/inicio.js" charset="utf-8"></script>
+</body>
+</html>
+
+<!-- pattern="((?=\S*[A-Z])(?=\S*[a-z])(?=\S*\d)($?=\S*[@$%#!¡?¿.,]))\S{10,30}$" required -->
+
+
+<!-- <!DOCTYPE html>
+<html lang="es">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<meta name="viewport" content="width=device-width, user-scalable=yes, initial-scale=1.0, maximum-scale=3.0, minimum-scale=1.0">
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" >
+	<link rel="stylesheet" href="../statics/css/inicio.css">
+</head>
+<body>
+	<form class="formulario">
+		<h1>Alumno</h1>
+		<div class="contenedor"> -->
+			<!-- <div class="input-contenedor"> -->
+			<!-- <i class="fas fa-envelope icon"></i>
+			<input type="text" placeholder="Correo Electronico" pattern="^\w+@(comunidad.unam.mx|(gmail|hotmail|yahoo).com)$"> -->
+			<!-- </div> -->
+			<!-- <div class="input-contenedor">
+				<div class="cambio">
+					<i class="fas fa-address-card icon"></i>
+					<input type="text" placeholder="Cuenta" name="noCuenta" class="uno">
+				</div>
+			</div>
+			<div class="input-contenedor">
+				<i class="fas fa-key icon"></i>
+				<input type="password" placeholder="Contraseña" pattern="((?=\S*[A-Z])(?=\S*[a-z])(?=\S*\d)($?=\S*[@$%#!¡?¿.,]))\S{10,30}$" required>
+			</div>
+			<input type="submit" value="Ingresar" class="button">
+			<p>¿No tienes una cuenta? <a class="link" href="registro.html">Registrate </a></p>
+			<div class="botones">
+				<button type="button" class="maestro" id="botonCambio">Maestro</button> <p></p>
+				<button type="button" class="correo">Ingresar Con Correo</button>
+			</div>
+			<input type="hidden" name="tipo" value="alumno" class="tipo">
+			<input type="hidden" name="ingreso" value="cuenta" class="ingreso">
+			<input type="hidden" name="acomodo" value="no" class="acomodo">
+		</div>
+	</form>
+	<script src="../dynamics/js/inicio.js" charset="utf-8"></script>
+</body>
+</html> -->

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="es" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="../statics/css/encuestaC.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css">
+    <title></title>
+  </head>
+  <body>
+    <nav>
+      <h1>ENCUESTAS<small>Por Coyopinión</small></h1>
+    </nav>
+    <div class="contenido" id="cuerpo">
+      <form class=""  method="post" id="form">
+        <div id="datosEncuesta">
+          <div class="cambio">
+            <h3>Fecha de expiración de tu encuesta</h3>
+            <input type="date" name="exp" value="" id="fecha">
+            <h3>Ingresa el número de preguntas de tu encuesta</h3>
+            <input type='number' name="preg" min=1 max=5 id='number'>
+            <h3>¿Desea que su encuesta sea limitada a ciertos usuarios?</h3>
+            <input type='checkbox' name="preg" min=1 max=5 id='det'>
+            <h3>¿Desea que su encuesta necesite un incio de sesión para ser contestada?</h3>
+            <input type='checkbox' name="preg" min=1 max=5 id='in'>
+            <h3>Selecciona la categoria de tu encuesta</h3>
+            <select class="categoria" name="categ" id="cat">
+            </select>
+          </div>
+          <h3>Ingresa el título:</h3>
+          <input type='text' name="tit" id="titulo">
+          <h3>Descripción de tu encuesta:</h3>
+          <textarea name='descrip' rows='8' cols='80' resize=none id="desc" ></textarea>
+        </div>
+        <div id="container">
+        </div>
+        <div class="botones">
+          <div><button type="button" name="button"  id="sub">Enviar encuesta</button></div>
+          <div><button type="button" class="oculta agPreg" name="button">Agregar pregunta</button></div>
+        </div>
+      </form>
+      <div class="errores"></div>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js "></script>
+    <script src="../dynamics/js/creaencuesta.js" charset="utf-8"></script>
+    <!--<script src="../dynamics/js/verifForm.js" charset="utf-8"></script>-->
+  </body>
+</html>

@@ -1,6 +1,54 @@
-let lista=document.getElementsByClassName("lista")[0];
+
+
+let lista=$(".lista");   //stringify=>json(encode)
 let categorias=[];
-let listaCategoria=document.getElementsByClassName("categoria")[0];
+let listaCategoria=$(".categoria");
+
+///////////////////////////////////////////////////Peticion Ajax//////////////////////////////////////////////////////////////////
+/*
+var jsonString= JSON.stringify(dataString);
+
+$.ajax({
+  type: "POST",
+  url: "ajax.php",
+  data: {data: jsonString},
+  cache: false,
+  success: (response)=>{
+    alert("ok");
+    var datos=(JSON.parse(response));
+    for (var i = 0; i < datos.length; i++) {
+      console.log(datos[i]);
+    }
+  }
+
+})
+*/
+
+///////////////////////////////////////////////////Peticion Ajax//////////////////////////////////////////////////////////////////
+
+///////////////////////////////////////////////////Peticion Categoria//////////////////////////////////////////////////////////////////
+
+/*
+function getCategories(){
+  fetch(`../dynamics/php/categorias.php?`, {
+    method: 'GET'
+}).then((response)=> {
+  return response.json();
+
+}).then((data)=> {
+
+  data.forEach(element =>{
+
+    var option=$("option");
+    option.text=categorias[indice];
+    option.attr("value", categorias[indice]);
+    listaCategoria.append(option);
+  })
+})
+
+}
+
+///////////////////////////////////////////////////Peticion Categoria//////////////////////////////////////////////////////////////////
 
 fetch('../dynamics/php/creaencuesta.php')
 .then((resp)=> resp.json())
@@ -13,252 +61,325 @@ fetch('../dynamics/php/creaencuesta.php')
 }).catch(error=> console.log(error));
 setTimeout(()=>{
   for(indice in categorias){
-    var option=document.createElement("option");
-    option.innerText=categorias[indice];
-    option.setAttribute("value", categorias[indice]);
-    listaCategoria.appendChild(option);
+    var option=$("option");
+    option.text=categorias[indice];
+    option.attr("value", categorias[indice]);
+    listaCategoria.append(option);
   }
-},1000);
+},1000);*/
 
 
 
-document.getElementById('form').addEventListener('submit', (e) => {
+$("#sub").click(function(event){
   var ok= true;
-  e.preventDefault();
-  console.log(ok);
   var errores=[];
-  let fechaUsu=getValues("fecha");
-  let fechaObj=new Date(fechaUsu);//Fecha del formulario
-  var todayDate = new Date(); //Today Date
-  if (fechaObj < todayDate) {
-    errores.push("La fecha debe ser mayor al día actual");
+  var fecha=$("#fecha").val();
+  var numer=$("#number").val();
+  var nom=$("#titulo").val();
+  var des=$("#desc").val();
+  var det=$("#det").val();
+  var ing=$("#in").val();
+  if(fecha=="" || numer<1 || nom=="" || des=="" ){
+    ok=false;
   }
-
-  var datos=[];
-  datos.push(getValues("titulo"), getValues("desc"), getValues('number'), getValues('fecha'));
-  if(errores.length>0){
-    ok= false;
-  }
-  let cantidadPreg = getValues('number');
-  let contador=getValues("number");
-  let i=0;
-
+  let contador=numer;
   ////////////////////////////////////////////////////////////////////////////////
-  ////////////////////////////////Crear Preguntas/////////////////////////////////
+  ////////////////////////////////:) Crear Preguntas /////////////////////////////
   ////////////////////////////////////////////////////////////////////////////////
   if (ok==true) {
-    let cambio=document.getElementsByClassName("cambio")[0];
-    cambio.innerHTML="";
-    let botonAparece=document.getElementsByClassName("oculta")[0];
-    botonAparece.classList.remove("oculta");
-    let contenedor=document.getElementById('container');
+    let cambio=$(".cambio");
+    cambio.empty();
+    $(".oculta").removeClass("oculta");
+    let inp=$("#sub");
+    inp.addClass("Envios");
+    let contenedor=$("#container");
     for (var j = 1; j <= contador; j++) {
-      let cont = document.createElement("div");
-      cont.classList.add("ContP");
-      //cont.classList.add("pregunta");
-      let pregunta=document.createElement("input");
-      pregunta.classList.add("pregunta");
-      pregunta.setAttribute("value","Título de tu pregunta");
+      let cont = $("<div>");
+      cont.addClass("ContP");
+      let pregunta=$("<input>");
+      pregunta.addClass("pregunta");
+      pregunta.attr("name", "pregunta");
+      pregunta.attr("required", "true");
 
+      let texto=$("<h4>");
+      texto.addClass("agregar");
+      texto.text("Agregar opciones a la pregunta");
+      let opciones=$("<div>");
+      opciones.addClass("respuestas");
 
-      let texto=document.createElement("h4");
-      texto.classList.add("agregar");
-      texto.innerText="Agregar opciones a la pregunta ";
-      let opciones=document.createElement("div");
-      opciones.classList.add("respuestas")
+      let div1=$("<div>");
+      div1.addClass("dOpcion");
+      let div2=$("<div>");
+      div2.addClass("dOpcion");
+      let op1=$("<input>");
+      let el1=$("<label>");
+      let op2=$("<input>");
+      let el2=$("<label>");
+      el1.text("X");
+      el2.text("X");
+      op1.attr("required","true");
+      op2.attr("required","true");
+      op1.addClass("opcion");
+      op1.attr("name","opcion");
+      op2.addClass("opcion");
+      op2.attr("name","opcion");
+      el1.addClass("elmOp");
+      el2.addClass("elmOp");
+      div1.append(el1);
+      div1.append(op1);
+      div2.append(el2);
+      div2.append(op2);
+      opciones.append(div1);
+      opciones.append(div2);
 
-      let div1=document.createElement("div");
-      div1.classList.add("dOpcion");
-      let div2=document.createElement("div");
-      div2.classList.add("dOpcion");
-      let op1=document.createElement("input");
-      let el1=document.createElement("label");
-      let op2=document.createElement("input");
-      let el2=document.createElement("label");
-      el1.innerText="X";
-      el2.innerText="X";
-      op1.required=true;
-      op2.required=true;
-      op1.classList.add("opcion");
-      op2.classList.add("opcion");
-      el1.classList.add("elmOp");
-      el2.classList.add("elmOp");
-      div1.appendChild(el1);
-      div1.appendChild(op1);
-      div2.appendChild(el2);
-      div2.appendChild(op2);
-      opciones.appendChild(div1);
-      opciones.appendChild(div2);
-
-      let botonEliminar=document.createElement("label");
-      botonEliminar.classList.add("eliminar");
-      botonEliminar.innerText="Eliminar pregunta";
-      contenedor.appendChild(cont);
-      cont.appendChild(pregunta);
-      cont.appendChild(botonEliminar);
-      cont.appendChild(texto);
-      cont.appendChild(opciones);
+      let botonEliminar=$("<label>");
+      botonEliminar.addClass("eliminar");
+      botonEliminar.text("Eliminar pregunta");
+      contenedor.append(cont);
+      cont.append(pregunta);
+      cont.append(botonEliminar);
+      cont.append(texto);
+      cont.append(opciones);
     }
-  //  var cont=document.getElementById("container");
-    document.addEventListener(("click"),(e)=>{
-     let obj=e.target;
-     if(obj.classList=="eliminar"){
-       let totalContenedor=document.getElementsByClassName("ContP").length;
-       if(totalContenedor>=2){
-         let divEliminado=obj.parentNode;
-         contenedor.removeChild(divEliminado);
+
+  $("body").click(function(event){
+    var obje=$(event.target);
+    var objeI=$(obje).attr('id');
+    console.log(objeI);
+    let obj=$(event.target);
+     if(obj.hasClass("eliminar")){
+       let cont=$(".ContP").length;
+       if(cont>=2){
+         let divEliminado=obj.parent();
+         divEliminado.remove();
        }
      }
-     if(obj.classList=="agregar"){
-       let divAgregado=obj.parentNode;
-       let respuestas=divAgregado.getElementsByClassName("respuestas")[0];
-       console.log(respuestas);
-       let input=respuestas.getElementsByClassName("opcion").length;
-       console.log(input);
+     if(obj.hasClass("agregar")){
+       let divAgregado=obj.parent();
+       let respuestas=$(divAgregado).find(".respuestas");
+       let input=$(respuestas).find(".opcion").length;
        if(input<=9){
-         let divNuevo=document.createElement("div");
-         divNuevo.classList.add("dOpcion");
-         let nuevoInput=document.createElement("input");
-         let nuevoEl=document.createElement("label");
-         nuevoEl.classList.add("elmOp");
-         nuevoEl.innerText="X";
-         nuevoInput.required=true;
-         nuevoInput.classList.add("opcion");
-         divNuevo.appendChild(nuevoEl);
-         divNuevo.appendChild(nuevoInput);
-         respuestas.appendChild(divNuevo);
+         let divNuevo=$("<div>");
+         divNuevo.addClass("dOpcion");
+         let nuevoInput=$("<input>");
+         let nuevoEl=$("<label>");
+         nuevoEl.addClass("elmOp");
+         nuevoEl.text("X");
+         nuevoInput.attr("required","true");
+         nuevoInput.attr("name","opcion");
+         nuevoInput.addClass("opcion");
+         divNuevo.append(nuevoEl);
+         divNuevo.append(nuevoInput);
+         respuestas.append(divNuevo);
        }
      }
-     if(obj.classList=="elmOp"){
-       let opElim=obj.parentNode;
-       console.log(opElim);
-       let conOp=opElim.parentNode;
-       let totalOp=conOp.getElementsByClassName("dOpcion").length;
+     if(obj.hasClass("elmOp")){
+       let opElim=obj.parent();
+       let conOp=opElim.parent();
+       let totalOp=$(conOp).find(".dOpcion").length;
        if(totalOp>2){
-         conOp.removeChild(opElim);
+         opElim.remove();
        }
      }
-     if(obj.classList=="agPreg"){
-       let totalPreguntas=contenedor.getElementsByClassName("ContP").length;
+     if(obj.hasClass("agPreg")){
+       let totalPreguntas=$(".ContP").length;
        if(totalPreguntas<=4){
-         let contNuevo = document.createElement("div");
-         contNuevo.classList.add("ContP");
-         let preguntaNueva=document.createElement("input");
-         preguntaNueva.classList.add("pregunta");
-         preguntaNueva.setAttribute("value","Título de tu pregunta");
-         let textoNuevo=document.createElement("h4");
-         textoNuevo.classList.add("agregar");
-         textoNuevo.innerText="Agregar opciones a la pregunta ";
-         let opcionesNuevo=document.createElement("div");
-         opcionesNuevo.classList.add("respuestas")
+         let cont = $("<div>");
+         cont.addClass("ContP");
+         let pregunta=$("<input>");
+         pregunta.addClass("pregunta");
+         pregunta.attr("name", "pregunta");
+         pregunta.attr("required", "true");
 
-         let divNu1=document.createElement("div");
-         divNu1.classList.add("dOpcion");
-         let divNu2=document.createElement("div");
-         divNu2.classList.add("dOpcion");
-         let op1N=document.createElement("input");
-         let el1N=document.createElement("label");
-         let op2N=document.createElement("input");
-         let el2N=document.createElement("label");
-         el1N.innerText="X";
-         el2N.innerText="X";
-         op1N.required=true;
-         op2N.required=true;
-         op1N.classList.add("opcion");
-         op2N.classList.add("opcion");
-         el1N.classList.add("elmOp");
-         el2N.classList.add("elmOp");
-         divNu1.appendChild(el1N);
-         divNu1.appendChild(op1N);
-         divNu2.appendChild(el2N);
-         divNu2.appendChild(op2N);
-         opcionesNuevo.appendChild(divNu1);
-         opcionesNuevo.appendChild(divNu2);
+         let texto=$("<h4>");
+         texto.addClass("agregar");
+         texto.text("Agregar opciones a la pregunta");
+         let opciones=$("<div>");
+         opciones.addClass("respuestas");
 
-         let botonEliminarN=document.createElement("label");
-         botonEliminarN.classList.add("eliminar");
-         botonEliminarN.innerText="Eliminar pregunta";
-         contenedor.appendChild(contNuevo);
-         contNuevo.appendChild(preguntaNueva);
-         contNuevo.appendChild(botonEliminarN);
-         contNuevo.appendChild(textoNuevo);
-         contNuevo.appendChild(opcionesNuevo);
+         let div1=$("<div>");
+         div1.addClass("dOpcion");
+         let div2=$("<div>");
+         div2.addClass("dOpcion");
+         let op1=$("<input>");
+         let el1=$("<label>");
+         let op2=$("<input>");
+         let el2=$("<label>");
+         el1.text("X");
+         el2.text("X");
+         op1.attr("required","true");
+         op2.attr("required","true");
+         op1.addClass("opcion");
+         op1.attr("name","opcion");
+         op2.addClass("opcion");
+         op2.attr("name","opcion");
+         el1.addClass("elmOp");
+         el2.addClass("elmOp");
+         div1.append(el1);
+         div1.append(op1);
+         div2.append(el2);
+         div2.append(op2);
+         opciones.append(div1);
+         opciones.append(div2);
+         let botonEliminar=$("<label>");
+         botonEliminar.addClass("eliminar");
+         botonEliminar.text("Eliminar pregunta");
+         contenedor.append(cont);
+         cont.append(pregunta);
+         cont.append(botonEliminar);
+         cont.append(texto);
+         cont.append(opciones);
        }
      }
-      /*console.log(obj);
-      if(obj.classList=="agregar"){
-        let id=obj.id;
-        id=id.substr(3);
-        console.log(id);
-        console.log("R"+id);
-        let contResp=document.getElementById("R"+id);
-        console.log(contResp);
-        let num=contResp.getElementsByTagName("input").length;
-        console.log(num);
-        if(num<=9){
-          let novNum=num+1;
-          let novIn=document.createElement("input");
-          novIn.id="Op"+id+novNum;
-          novIn.required=true;
-          contResp.appendChild(novIn);
-        }
-      }
-      if(obj.classList=="eliminar"){
-        let idEm=obj.id;
-        idEm=idEm.substr(3);
-        let contenedor=document.getElementById("container");
-        let contEm=document.getElementById("ContP"+idEm);
-        let numEm=document.getElementsByClassName("pregunta").length;
-        if(numEm >= 2){
-          contenedor.removeChild(contenedor.childNodes[idEm-1]);
-        }
-      }
-      if(obj.classList=="agPreg"){
-        console.log("h");
-        let contentAg=document.getElementById("container");
-        let agCont=document.getElementsByClassName("pregunta").length;
-        let agNum=parseInt(agCont);
-        agNum=agNum+1;
-        console.log(agCont);
-        if(agCont<=4){
-          let contAg = document.createElement("div");
-          contAg.id="ContP"+agNum;
-          contAg.classList.add("pregunta");
-          let preguntaAg=document.createElement("input");
-          preguntaAg.id="P"+agNum;
-          let textoAg=document.createElement("h3");
-          textoAg.id="Agr"+agNum;
-          textoAg.classList.add("agregar");
-          textoAg.innerText="Agregar opciones a la pregunta "+agNum;
-          let opcionesAg=document.createElement("div");
-          opcionesAg.id="R"+agNum;
-          let botonAg=document.createElement("boton");
-          botonAg.id="B"+agNum;
-
-          let opAg=document.createElement("input");
-          let opAg2=document.createElement("input");
-          opAg.required=true;
-          opAg2.required=true;
-          opAg.id="Op"+agNum+"1";
-          opAg2.id="Op"+agNum+"2";
-          opcionesAg.appendChild(opAg);
-          opcionesAg.appendChild(opAg2);
-          preguntaAg.setAttribute("value","Pregunta "+agNum);
-          let botonAg2=document.createElement("h4");
-          botonAg2.id="Bot"+agNum;
-          botonAg2.classList.add("eliminar");
-          botonAg2.innerText="EliminarP"+agNum;
-          contentAg.appendChild(contAg);
-          contAg.appendChild(preguntaAg);
-          contAg.appendChild(botonAg2);
-          contAg.appendChild(textoAg);
-          contAg.appendChild(opcionesAg);
-        }
-      }*/
+     if(objeI=="sub"){
+       obtenerDatos();
+     }
     })
   }
-})
+});
 
-function getValues(id) { //Obtener los valores del elemento con ese ID
-  return document.getElementById(id).value;
+function obtenerDatos(){
+   var validacion=0;
+   $(".pregunta").each(function(indice, elemento){
+      if($(elemento).val()==""){
+        validacion=1;
+      }
+    });
+    $(".opcion").each(function(indice, elemento){
+       if($(elemento).val()==""){
+         validacion=1;
+       }
+    });
+    if(validacion==0){
+      let preguntas=$("#container").find(".pregunta");
+      let campos=$("#container").find(".pregunta").length;
+      let titulo=$("#titulo").val();
+      let descripcion=$("#desc").val();
+      let arrayEnc=["0",titulo,"1","0",campos,"0","0","0",descripcion];
+      console.log(arrayEnc);
+      let arrayP=[];
+      let arrayO=[];
+      let u=0;
+      $(".pregunta").each(function(){
+        let i=0;
+        arrayP=[];
+        arrayP[i]=$(this).val();
+        let padre=$(this).parent();
+        $(padre).find(".opcion").each(function(ind,elem){
+          i++;
+          arrayP[i]=$(elem).val();
+        });
+        arrayO[u]=arrayP;
+        u++;
+      });
+
+     // // arrayO y arrayEnc
+     // var uj= JSON.stringify(arrayO);
+     // var dj= JSON.stringify(arrayEnc);
+
+
+
+
+     console.log("Ya se va a realizar ajax");
+     let oshuj=JSON.stringify(arrayO);
+     $.ajax({
+             type: "POST",
+             dataType: "json",
+             url: "../dynamics/php/recibejson.php",
+             data: {myData:oshuj},
+             cache: false,
+             contentType: "application/json; charset=utf-8",
+             success: (response)=>{
+                 alert('Items added');
+             },
+             error: function(e){
+                 console.log(e.message);
+             }
+     });
+
+
+
+     // var miAjax = new Request({
+     //   url: "../dynamics/php/recibejson.php",
+     //   data: "datos=" + uj,
+     //   onSuccess: function(SI){
+     //     $('resultado').set("html", si);
+     //   },
+     //   onFailure: function(){
+     //     $('resultado').set("html", "fallo en la conexión Ajax");
+     //   }
+     // })
+     // miAjax.send();
+
+     $(document).ready(function(){
+         $('#getUser').on('click',function(){
+             var user_id = $('#user_id').val();
+             // var user_id = 1;
+             $.ajax({
+                 type:'POST',
+                 url:'ajax.php',
+                 dataType: "json",
+                 data:{user_id:user_id},
+                 success:function(data){
+                     if(data.status == 'ok'){
+                       var nombre =  data.result.name;
+                         // $('#userEmail').text(data.result.email);
+                         // $('#userPhone').text(data.result.phone);
+                         // $('#userCreated').text(data.result.created);
+                         $('.user-content').slideDown();
+                         console.log(nombre);
+                     }else{
+                         $('.user-content').slideUp();
+                         alert("User not found...");
+                     }
+                 }
+             });
+         });
+     });
+
+
+
+
+
+
+
+      // function getPoll() {
+      //  fetch(`../dynamics/php/consulta.php?`, {
+      //    method: 'GET'
+      //  }).then((response) => {
+      //
+      //    return response.json();
+      //
+      //  }).then((data) => {
+      //
+      //    data.forEach(element => {
+      //
+      //      datos.id_encuesta=element.id_encuesta
+      //      datos.id_categoria=element.id_categoria
+      //      datos.nombre=element.nombre
+      //      datos.id_estado=element.id_estado
+      //      datos.id_usuario=element.id_usuario
+      //      datos.campos=element.campos
+      //      datos.fecha=element.fecha
+      //      datos.determinado=element.determinado
+      //      datos.id_registro=element.id_registro
+      //
+      //    });
+      //    console.log(datos);
+      //    document.getElementById("nombredelusuario").innerHTML=datos.id_encuesta;
+      // })
+      //
+      // }
+      //
+      // getPoll();
+      //
+
+
+
+
+    }
+  }
+
+function getValues(id) {
+  return $("#"+id).val();
 }

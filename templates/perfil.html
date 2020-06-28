@@ -1,8 +1,9 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
 <head>
-  <link  rel="icon"   href="../statics/media/img/logoarcade.png" type="image/png">
+  <link  rel="icon"   href="../statics/media/img/loguito.png" type="image/png">
   <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
   <title>Pagina de Usuario</title>
   <link rel="stylesheet" href="../statics/css/perfil.css">
   <!-- <link rel="stylesheet" href="../lib/fontawesome_5_13/css/all.css"> -->
@@ -10,40 +11,40 @@
 </head>
 <body>
   <header>
-    <a id="logo-header" href="Paginainicio.html"><img src="" class="logo"></a>
+    <a id="logo-header" href="Paginainicio.html"><img src="../statics/media/img/loguito.png" class="logo"></a>
     <nav id="menu">
       <ul>
         <li><a><i id="u" class="fas fa-cog"></i></a>
           <ul>
-            <li><a href="Tron.html">Cambiar Foto</a></li>
+            <li id="foto"><a href="..\dynamics\php\foto2.php">Cambiar Foto</a></li>
             <li><a href="Introgame.html">Reportar Usuario</a></li>
           </ul>
         </li>
-        <li><a id="csesion" href="historia.html"><i class="far fa-times-circle"></i> Cerrar Sesión</a></li>
+        <li><a id="csesion" href="../dynamics/php/cerrarSesion.php"><i class="far fa-times-circle"></i> Cerrar Sesión</a></li>
       </ul>
     </nav>
   </header>
   <div class="fondo">
-    <img id="fondo" src="../statics/media/img/prepa.png">
+    <img id="fondo" src="../statics/media/img/rreresized.png">
   </div>
   <div class="infousuario">
     <!-- <img id="perfil" src="../statics/media/img/icon.jpg"> -->
-    <img id="perfil" src="../statics/media/img/icon.jpg">
-    <i id="plus" class="fas fa-plus"></i>
+    <img id="perfil" >
     <p id="nombredelusuario"></p>
-    <p id="cumple">dd/mm/aaaa</p>
-    <p id="correo">example@gmail.com</p>
+    <p id="cumple"></p>
+    <p id="correo"></p>
   </div>
   <div class="seleccion">
     <button type="button" id="misencuestas" name="misencuestas">MIS ENCUESTAS</button>
     <button type="button" id="miactividad" name="miactividad">MI ACTIVIDAD</button>
     <button type="button" id="ingresaraencuesta" name="ingresaraencuesta">INGRESAR A ENCUESTA</button>
-    <button type="button" id="contacto" name="contacto">CONTACTO</button>
   </div>
+  <div id="show">
 
-</div>
-<script type="text/javascript" src="../dynamics/js/perfil.js">
+  </div>
+  </div>
+<script type="text/javascript" src="../dynamics/js/perfil.js"></script>
 
-</script>
+
 </body>
 </html>

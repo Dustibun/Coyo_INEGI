@@ -6,42 +6,50 @@
     <title></title>
   </head>
   <body>
-    <div class="img">
-      <?php
-      include 'configuracion.php';
+    <div class="container">
 
-      session_start();
+      <div class="img">
+        <?php
 
-      $cuenta=$_SESSION['cuenta'];
+        include 'configuracion.php';
 
-      function getImage($usuario)
-      {
-        $con = conectar();
-        $result=mysqli_query($con,"SELECT foto FROM usuario WHERE id_usuario=$usuario");
+        session_start();
+        if (!isset($_SESSION['cuenta'])) {
+          session_unset();
+          session_destroy();
+          header('Location: ../../templates/inicio.html');
+        }
+        $cuenta=$_SESSION['cuenta'];
 
-        $response = [];
-      	  while($row = mysqli_fetch_assoc($result))
-      	{
-      		array_push($response, $row);
-      	}
-      	  return $response;
+        function getImage($usuario)
+        {
+          $con = conectar();
+          $result=mysqli_query($con,"SELECT foto FROM usuario WHERE id_usuario=$usuario");
 
-      }
+          $response = [];
+        	  while($row = mysqli_fetch_assoc($result))
+        	{
+        		array_push($response, $row);
+        	}
+        	  return $response;
+
+        }
 
 
 
-      $image = getImage($cuenta)[0]['foto'];
+        $image = getImage($cuenta)[0]['foto'];
 
-      echo "<img src='../../statics/media/img/perfil/".$image."'>"
-      ?>
+        echo "<img src='../../statics/media/img/perfil/".$image."'>"
+        ?>
+      </div>
+      <div class="marco">
+        <form class="" action="subir.php" method="post" enctype="multipart/form-data">
+          <input type="file" name="imagen" value="imagen" id="file">
+          <label for="file" id="fileText">Tu foto</label><br>
+          <input type="submit" name="" class="submit" value="Confirmar">
+        </form>
+      </div>
     </div>
-    <div class="marco">
-      <form class="" action="subir.php" method="post" enctype="multipart/form-data">
-        <input type="file" name="imagen" value="imagen" id="file">
-        <label for="file" id="fileText">Tu foto</label><br>
-        <input type="submit" name="" class="submit" value="Confirmar">
-      </form>
-    </div>
-    <a href="#">Regresar a la página</a>
+    <a href="../../templates/perfil.html">Regresar a la página</a>
   </body>
 </html>

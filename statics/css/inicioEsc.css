@@ -1,0 +1,210 @@
+/*Para poder ocupar las fuentes*/
+@font-face {
+  font-family: "Roboto";
+  src: url("../../lib/fuentes/roboto-condensed.light.ttf");
+}
+@font-face {
+  font-family: "RobotoBold";
+  src: url("../../lib/fuentes/roboto-condensed.bold.ttf");
+}
+/*Para darle stilo a todo*/
+* {
+  margin: 0;
+  padding: 0;
+}
+/*Para darle estilo al id menu y a la etiqueta ul*/
+#menu ul {
+  list-style:none;
+}
+/*Para darle estilo al id menu y a la etiqueta ul y a*/
+#menu ul a {
+  color:#fff;
+  display:block;
+  font-weight:500;
+  font-family:"Roboto";
+  font-size: 50px;
+  padding:20px;
+  text-decoration:none;
+  text-transform:uppercase;
+}
+/*Para darle estilo al id menu y a la etiqueta ul y li*/
+#menu ul li {
+  float:left;
+  position:relative;
+  margin-right: 200px;
+}
+/*Para darle estilo al id menu y a la etiqueta ul y li cuando se pase el mouse*/
+
+/*Para darle estilo al id menu y a la etiqueta ul*/
+#menu ul ul {
+  display:none;
+  position:absolute;
+  top:100%;
+}
+/*Para darle estilo al id menu y a la etiqueta ul y li*/
+#menu ul ul li {
+  float:none;
+  width:150px
+}
+/*Para darle estilo al id menu y a la etiqueta ul y a*/
+#menu ul ul a {
+  color: black;
+  line-height:120%;
+}
+/*Para darle estilo al id menu y a la etiqueta ul y li cuando se pase el mouse*/
+#menu ul li:hover ul {
+  background-color: rgb(218, 220, 231);
+  opacity: 0.8;
+  display:block;
+}
+/*Para darle estilo al id logo header*/
+#logo-header {
+	float: left;
+	padding: 3px 0 0 20px;
+}
+/*Para darle estilo al id logo header cuando se pase el mouse*/
+#logo-header:hover {
+  transition: width 2s, height 2s, transform 2s;
+  transform: rotate(1080deg);
+}
+
+.form{
+  /* background-image: url('../../statics/media/img/loguito.png'); */
+  position: absolute;
+  align-items: center;
+  margin-top: 15%;
+  margin-left: 40%;
+  background-size: contain;
+  width:27%;
+  height:50%;
+}
+.dataquest{
+  text-align:center;
+  margin-top: -8%;
+  width:100%;
+  height: 100%;
+  background-color: rgb(41, 90, 145);
+  opacity:0.8;
+  border-radius: 60px;
+}
+
+/*Para darle estilo a la clase boton*/
+.boton{
+  text-align: right;
+}
+/*Para darle estilo a la clase footer*/
+.footer{
+  margin-bottom: 10px;
+  text-align:center;
+  font-family: "Arcade";
+  font-size: 25px;
+  color: white ;
+}
+/*Para darle estilo a la clase inicio*/
+.inicio{
+  align-items: center;
+  color:white;
+  display: flex;
+  font-family: "Arcade";
+  font-size: 27px;
+  grid-gap: 40px;
+  justify-content: center;
+  padding: 127px;
+  text-align: center;
+}
+/*Para darle estilo a la clase logo*/
+.logo{
+  float: right;
+  height: 100px;
+  width: 100px;
+}
+
+h1{
+  margin-top: 5%;
+  color: WHITE;
+}
+small{
+  font-size:20px;
+}
+.questdata{
+  margin-top: 10%;
+  width: 50%;
+  height: 60px;
+  margin-left: -45%;
+  text-align: center;
+  border-radius: 130px;
+  font-family: "Roboto",sans-serif;
+  font-size:40px;
+}
+.questdata{
+  margin-top: 10%;
+  width: 50%;
+  height: 60px;
+  margin-left:-45%;
+  text-align: center;
+  border-radius: 130px;
+  font-family: "Roboto",sans-serif;
+  font-size:40px;
+}
+.submit{
+  margin-top: 10%;
+  width: 20%;
+  height: 60px;
+  margin-left: -45%;
+  text-align: center;
+  border-radius: 130px;
+  background-color: rgb(237, 96, 87);
+  font-family: "Roboto",sans-serif;
+  font-size:40px;
+  color:white;
+}
+/*Para darle estilo al body*/
+body{
+  background:url('../../statics/media/img/adminfondo.jpg');
+  min-height:100%;
+  background-size:cover;
+}
+/*Para darle estilo a la etiqueta form*/
+form{
+  width: 800px;
+}
+/*Para darle estilo a la etiqueta header*/
+header {
+  position: fixed;
+  width: 100%;
+  z-index: 100;
+}
+/*Para darle estilo a la etiqueta header y nav*/
+header nav {
+  float: right;
+}
+/*Para darle estilo a la etiqueta footer*/
+footer{
+  width: 100%;
+}
+
+/*Para darle estilo a la etiqueta footer con la etiqueta nav*/
+footer nav {
+  display: flex;
+  flex: 1 1 auto;
+  flex-flow: column nowrap;
+  float: center;
+  width: 100%;
+}
+/*Para darle estilo a la etiqueta footer con la etiqueta nav y ul*/
+footer nav ul {
+  list-style: none;
+  overflow: hidden;
+}
+/*Para darle estilo a la etiqueta footer con la etiqueta nav, ul y li*/
+footer nav ul li {
+  float: center;
+  font-family: "Arcade";
+  font-size: 20px;
+  padding: 3px;
+
+}
+/*Para darle estilo a img*/
+img{
+  width:10%;
+}

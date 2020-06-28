@@ -136,7 +136,7 @@ if ($tipo=="alumno") {
         mysqli_close($conexion);
         header('Location:../../templates/inicio.html');
       }else if($registro==1){
-        header('Location:registroInc.php');
+        header('Location:../../templates/registro.html');
         mysqli_close($conexion);
       }
   }else{

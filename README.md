@@ -20,7 +20,7 @@
 1. Acceder a la rama master donde se encontrarán todos los archivos necesarios para la instalación del proyecto.
 2. Asegúrate de no alterar el orden de las carpetas para que la aplicación funcione correctamente.
 3. Descarga el respaldo llamado DB_Coyopinion y crea tu base con ese respaldo, el nombre de tu base tiene que ser Coyopinion.
-4. Accede a la aplicación con la siguiente sentencia: localhost/
+4. Accede a la aplicación con la siguiente sentencia: localhost/Coyo_INEGI/templates/registro.html
 
 
 ### Guía de configuración del proyecto:
@@ -29,24 +29,16 @@
 
 ### Características del proyecto:
 
-Coyopinión es un sistema que, mediante la creación de un usuario, permite crear una encuesta para la comunidad de la Preparatoria 6. Existen dos posibles usuarios, alumno y profesor, el segundo tiene la opción de ser administrador seleccionando una opción en su registro. 
+Coyopinión es un sistema que, mediante la creación de un usuario, permite crear una encuesta para la comunidad de la Preparatoria 6. Existen dos posibles usuarios, alumno y profesor, el segundo tiene la opción de ser administrador seleccionando una opción en su registro.
 
 Las encuestas serán de 5 preguntas máximo, y de 10 opciones por cada pregunta.
 
 ### Comentarios adicionales a su proyecto:
- 
+* Las encuestas no salieron al 100%, logramos crear la encuesta pero no desplegarla. El archivo de las encuestas es creaencuesta.html, otros archivos que realizamos y no pudimos conectar son
 * El usuario de la base es 'SAVOR' y la contraseña es '4gu4$4b0rv4s@'.
 * Gracias a todos los mentores y compañeros, que nos ayudaron y entraron a nuestra sesión de Zoom:
-  * Con honores, Diego Rosas
-  * Antonio Chong
-  * Gamaliel Ríos
-  * Tamara Arenas y Mariana Melo
-  * y a todos los mentores, Emi, Manu, Juan y a Carlos por este maravilloso curso.
-
-
-
-
-
-
-
-
+  * Con honores, Diego Rosas <3
+  * Con honores, Antonio Chong
+  * Con honores, Gamaliel Ríos
+  * Con honores, Tamara Arenas y Mariana Melo
+  * y a todos los demás mentores (con honores), Emi, Manu, Juan y a Carlos por este maravilloso curso.

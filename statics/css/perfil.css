@@ -30,9 +30,11 @@
   float: left;
   padding: 3px 0 0 20px;
 }
-#logo-header:hover {
-  background-color: #007bff;
+.logo{
+  width: 10%;
+  height: auto;
 }
+
 #menu ul {
   list-style:none;
 }

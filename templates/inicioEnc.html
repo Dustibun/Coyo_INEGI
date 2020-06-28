@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <link  rel="icon"   href="../statics/media/img/loguito.png" type="image/png">
+  <meta charset="utf-8">
+  <title>Inicio</title>
+  <link rel="stylesheet" href="../statics/css/inicioEsc.css">
+  <link rel="stylesheet" href="../lib/fontawesome_5_13/css/all.css">
+</head>
+<header>
+  <a id="logo-header" href="Paginainicio.html"><img src="../statics/media/img/loguito.png" class="logo"></a>
+  <nav id="menu">
+     <ul>
+      <li><a><i class="fas fa-user-friends"></i></a>
+        <ul>
+          <li><a href="">Iniciar Sesión</a></li>
+          <li><a href="">Registrarse</a></li>
+        </ul>
+      </li>
+     </ul>
+  </nav>
+</header>
+<body>
+
+  <div class="form">
+  <div class="dataquest">
+    <div class="h1">
+      <br>
+      <h1>Encuestas <small>por coyopinion</small></h1><br>
+    </div>
+    <div class="s">
+    <form action="../dynamics/php/valido.php" method="POST" id="superform">
+      <input class="questdata" type="number" name="requestdata" placeholder="Numero de Encuesta" required/>
+      <br>
+      <input class="submit" type="submit" value="Enviar">
+    </form>
+
+    </div>
+  </div>
+
+  </div>
+  <script src="../dynamics/js/paginicio.js"></script>
+</body>
+</html>

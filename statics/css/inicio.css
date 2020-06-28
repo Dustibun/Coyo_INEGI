@@ -1,8 +1,8 @@
 body {
     font-family: Arial, Helvetica, sans-serif;
     margin: 0;
-   background-image: url(../media/prepa.jpg);
-   background-position: center;
+    background-image: url('../../statics/media/img/totem.JPG');
+    background-position: center;
     background-size: cover;
     background-attachment: fixed;
 }

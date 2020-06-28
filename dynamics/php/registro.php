@@ -3,7 +3,7 @@
 @include 'cifrado.php';
 
 $tipo=$_POST['tipo']; //Alumno o maestro
-$p=date('Y');
+/*$p=date('Y');
 $p=substr($p, 2);
 $s=$p-2;  //Validación de los años de los números de cuenta
 $t=$p-1;
@@ -14,10 +14,10 @@ $iT=$iP-2;
 $nac=$p;  //Fecha de nacimiento
 $nac=$nac-18;
 $nac_4=$nac-1;
-$nac_2=$nac+1;         //*******************************//
-$nac_3=$nac+2;         //  Validación para CURP y RFC  //
-$nac_5=$nac+3;         //******************************//
-
+$nac_2=$nac+1;         //*******************************/
+//$nac_3=$nac+2;         //  Validación para CURP y RFC  //
+//$nac_5=$nac+3;         //******************************//
+/*
 $array_v=["B","C","D","F","G","H","J","K","L","M","N","Ñ","P","Q","R","S","T","V","W","X","Y","Z"];
 $nombre=strip_tags($_POST['nombre']);
 $nombre=mb_strtoupper($nombre);
@@ -55,7 +55,7 @@ function consonante($cadena){
   $texto=str_replace($array,"",$texto);
   $texto=substr($texto,0,1);
   return $texto;
-}
+}*/
 
 $conexion=conectar();
 if ($tipo=="alumno") {
@@ -75,8 +75,8 @@ if ($tipo=="alumno") {
   /*$reg="/^(200[$nac_2$nac_3$nac$nac_4$nac_5])-(0[1-9]|1[012])-(0[1-9]|1[0-9]|2[0-9]|3[01])$/";
   $reg2="/^(1($iP|$iS|$iT)|3($p|$s|$t))\d{6}$/";
   $reg3="/^$dosC$paterno2$tresC$unoC$año$mes$dia(MH)(AS|BS|CL|CS|DF|GT|HG|MC|MS|NL|PL|QR|SL|TC|TL|YN|NE|BC|CC|CM|CH|DG|GR|JC|MN|NT|OC|QT|SP|SR|TS|VZ|ZS)$patC$matC$nom2C(A|B|C|D|E|F|G|H|I|J|K|L|M|N|O|P|Q|R|S|T|U|V|W|X|Y|Z)\d$/";
-*/
-  //if(preg_match($reg,$fecha) && preg_match($reg2,$noCuen) && preg_match($reg3,$curp)){
+
+  if(preg_match($reg,$fecha) && preg_match($reg2,$noCuen) && preg_match($reg3,$curp)){*/
     if($conexion){
       $nom=mysqli_real_escape_string($conexion,$nom);
       $apPat=mysqli_real_escape_string($conexion,$apPat);
@@ -139,12 +139,12 @@ if ($tipo=="alumno") {
         header('Location:registroInc.php');
         mysqli_close($conexion);
       }
-    }else{
+  }else{
       echo "conexion fallida";
-    }
-  /*}else{
+  }
+/*}else{
     header('Location:../../templates/registro.html');
-  }*/
+}*/
 }
 if($tipo=="maestro"){
   $nom=strip_tags($_POST['nombre']);
@@ -157,9 +157,7 @@ if($tipo=="maestro"){
   $admin=(isset($_POST['admin']))? '1':'2';
 
   /*$reg4="/^$unoR$tresC$unoC$año$mes$dia\d{2}(0[1-9]|1[012])(0[1-9]|1[0-9]|2[0-9]|3[0-1])[0-9A-Z]{3}$/";
-  if(preg_match($reg4,$rfc)){
-    */
-
+  if(preg_match($reg4,$rfc)){*/
     if($conexion){
       $nom=mysqli_real_escape_string($conexion,$nom);
       $apPat=mysqli_real_escape_string($conexion,$apPat);
@@ -224,20 +222,9 @@ if($tipo=="maestro"){
     }else{
       echo "Conexión fallida";
     }
-
   /*}else{
     header('Location:../../templates/registro.html');
   }*/
 }
-
-
-/* RFC: /^[A-Z]{4}\d{2}(0[1-9]|1[012])(0[1-9]|1[0-9]|2[0-9]|3[0-1])[0-9A-Z]{3}$/ (el tuyo Vale)(wuuu)
-Nombre(s):^([A-ZÁÉÍÓÚ][a-záéíóú]{1,}\s?)+$
-Apellido(materno, paterno)^([A-ZÁÉÍÓÚ][a-záéíóú]{1,}\s?)+$
-Fecha de nacimiento: ^(200[2-3])-(0[1-9]|1[012])-(0[1-9]|1[0-9]|2[0-9]|3[01])$
-Número de cuenta:'^(1(15|16|17)|3(18|19|20))\d{6}$'
-Correo electrónico:^\w+@(comunidad.unam.mx|(gmail|hotmail|yahoo).com)$
-CURP: ^[A-Z]{4}(0[1-9]|[1-9][0-9])(0[1-9]|1[012])(0[1-9]|1[0-9]|2[0-9]|3[01])[MH](AS|BS|CL|CS|DF|GT|HG|MC|MS|NL|PL|QR|SL|TC|TL|YN|NE|BC|CC|CM|CH|DG|GR|JC|MN|NT|OC|QT|SP|SR|TS|VZ|ZS)[A-Z]{3}[A-Z]\w$
-Número de trabajador: ^\d{6}$*/
 
  ?>

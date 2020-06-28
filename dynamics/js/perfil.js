@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 
 let container=document.getElementById("BigBox");
@@ -23,6 +24,10 @@ let usuario=document.getElementById("usuario");
 
 
 
+=======
+
+getSession();
+>>>>>>> c0f91599bf6771429a7af2a8acd4fbe548fb71bb
 
 window.addEventListener("load", function(event) {
   console.log("Listo");
@@ -71,6 +76,7 @@ function getUser() {
  })
 }
 
+<<<<<<< HEAD
 function getPoll() {
   fetch(`../dynamics/php/encuestas.php?`, {
     method: 'GET'
@@ -98,6 +104,55 @@ function getPic() {
   return "name=" + document.getElementById("file").value;
 }
 
+=======
+
+
+
+function getPic() {
+  return "name=" + document.getElementById("file").value;
+}
+
+function getSession() {
+  fetch(`../dynamics/php/sesion.php?`,{
+    method: 'GET'
+  }).then((response)=>{
+
+    return response.json();
+  }).then((data)=>{
+
+    console.log("La sesion es...");
+    if (data!=1) {
+      window.location='inicio.html';
+      console.log("correcta");
+    }
+  })
+}
+
+function getPoll() {
+  fetch(`../dynamics/php/encuestas.php?`, {
+    method: 'GET'
+  }).then((response)=> {
+
+    return response.json();
+
+  }).then((data)=> {
+    show.innerHTML="";
+
+    data.forEach(element =>{
+      console.log(element);
+      container.classList.add("consultaAct")
+      container.classList.remove("consultaEnc");
+      container.innerHTML=`<h2>${element.nombre}`;
+
+      if (element.nombre==undefined) {
+        container.innerHTML=`<h2>No hay no existe`;
+      }
+
+    })
+    show.appendChild(container);
+  })
+}
+>>>>>>> c0f91599bf6771429a7af2a8acd4fbe548fb71bb
 function getActivity(){
   fetch(`../dynamics/php/actividad.php?`, {
     method: 'GET'
@@ -109,6 +164,7 @@ function getActivity(){
 
   data.forEach(element =>{
 
+<<<<<<< HEAD
     console.log(element);
     container.classList.remove("consultaEnc");
     container.classList.add("consultaAct");
@@ -120,6 +176,22 @@ function getActivity(){
     console.log(1);
 
 
+=======
+    show.innerHTML="";
+
+    data.forEach(element =>{
+      console.log(element);
+      container.classList.remove("consultaAct");
+      container.classList.add("consultaEnc")
+      container.innerHTML=`<h2>${element.nombre}`;
+
+      if (element.nombre==undefined) {
+        container.innerHTML=`<h2>No hay no existe`;
+      }
+
+    })
+    show.appendChild(container);
+>>>>>>> c0f91599bf6771429a7af2a8acd4fbe548fb71bb
   })
 })
 
@@ -176,6 +248,7 @@ function uploadPic() {
 
 })
 }
+<<<<<<< HEAD
 
 
 
@@ -231,3 +304,5 @@ getPoll();
 =======
 */
 >>>>>>> 72bc3b4ddeea922fe9664b31073ee637259873e2
+=======
+>>>>>>> c0f91599bf6771429a7af2a8acd4fbe548fb71bb
